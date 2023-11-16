@@ -20,6 +20,9 @@
     "paths": {
       "@phase-five-twenty/common/styles": [
         "libs/common/styles/src/index.ts"
+      ],
+      "@phase-five-twenty/common/ui": [
+        "libs/common/ui/src/index.ts"
       ]
     }
   },
