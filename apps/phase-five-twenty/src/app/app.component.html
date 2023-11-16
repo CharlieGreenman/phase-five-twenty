@@ -2,6 +2,20 @@
   (sideNavToggle)="sideNavToggle()"
 ></phase-five-twenty-global-header>
 <div class="wrapper">
-  <div class="container"></div>
+  <div class="container">
+    <phase-five-twenty-global-sidenav [opened]="sideNavOpen">
+      <mat-nav-list sidenav>
+        <a
+          mat-list-item
+          routerLinkActive="active-link"
+          routerLink="/"
+          (click)="sideNavToggle()"
+        >
+          <span class="App__sidenav-text">Home</span>
+        </a>
+      </mat-nav-list>
+      <router-outlet></router-outlet>
+    </phase-five-twenty-global-sidenav>
+  </div>
 </div>
 <phase-five-twenty-global-footer> </phase-five-twenty-global-footer>
