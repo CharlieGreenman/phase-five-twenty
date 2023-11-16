@@ -1,0 +1,95 @@
+{
+  "name": "phase-five-twenty",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/phase-five-twenty/src",
+  "prefix": "phase-five-twenty",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/phase-five-twenty",
+        "index": "apps/phase-five-twenty/src/index.html",
+        "main": "apps/phase-five-twenty/src/main.ts",
+        "polyfills": "apps/phase-five-twenty/src/polyfills.ts",
+        "tsConfig": "apps/phase-five-twenty/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/phase-five-twenty/src/favicon.ico",
+          "apps/phase-five-twenty/src/assets"
+        ],
+        "styles": ["apps/phase-five-twenty/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/phase-five-twenty/src/environments/environment.ts",
+              "with": "apps/phase-five-twenty/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "phase-five-twenty:build:production"
+        },
+        "development": {
+          "browserTarget": "phase-five-twenty:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "phase-five-twenty:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/phase-five-twenty/src/**/*.ts",
+          "apps/phase-five-twenty/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/phase-five-twenty"],
+      "options": {
+        "jestConfig": "apps/phase-five-twenty/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
